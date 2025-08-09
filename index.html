@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script type="module" src="https://unpkg.com/@material/web/all.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+  <title>Instagram Link Cleaner</title>
+</head>
+<body>
+
+  <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+
+
+  <div class="container">
+    <h1>Instagram Link Cleaner</h1>
+
+    <input type="text" id="inputLink" placeholder="Paste Instagram link here..." />
+
+    <button class="clean-btn" onclick="cleanAndDisplay()">Clean Link</button>
+
+
+    <div class="output" id="cleanedLinkContainer" style="display: none;">
+      <p id="cleanedLink"></p>
+      <button class="copy-btn" onclick="copyToClipboard()">
+        📋 Copy to Clipboard
+      </button>
+    </div>
+
+    <h3>Recent Cleaned Links</h3>
+    <ul id="recentLinksList"></ul>
+    <button class="clear-btn" onclick="clearHistory()">🗑️ Clear History</button>
+
+  </div>
+
+</body>
+</html>
