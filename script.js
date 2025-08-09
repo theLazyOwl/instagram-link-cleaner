@@ -1,20 +1,25 @@
 const MAX_HISTORY = 5;
 
     function cleanAndDisplay() {
-      const rawLink = document.getElementById('inputLink').value.trim();
-      const cleaned = cleanInstagramLink(rawLink);
+  const rawLink = document.getElementById('inputLink').value.trim();
+  const cleaned = cleanInstagramLink(rawLink);
 
-      const outputDiv = document.getElementById('cleanedLinkContainer');
-      const outputText = document.getElementById('cleanedLink');
+  const outputDiv = document.getElementById('cleanedLinkContainer');
+  const outputText = document.getElementById('cleanedLink');
 
-      outputText.textContent = cleaned;
-      outputDiv.style.display = 'block';
+  outputText.textContent = cleaned;
+  outputDiv.style.display = 'block';
 
-      if (cleaned.startsWith("http")) {
-        saveToRecent(cleaned);
-        displayRecentLinks();
-      }
-    }
+  if (cleaned.startsWith("http")) {
+    saveToRecent(cleaned);
+    displayRecentLinks();
+
+    // ✅ Automatically copy to clipboard (no alert)
+    navigator.clipboard.writeText(cleaned).catch(err => {
+      console.error("Failed to copy cleaned link:", err);
+    });
+  }
+}
 
     function cleanInstagramLink(link) {
   try {
@@ -43,14 +48,6 @@ const MAX_HISTORY = 5;
   }
 }
 
-
-
-    function copyToClipboard() {
-      const text = document.getElementById('cleanedLink').textContent;
-      navigator.clipboard.writeText(text)
-        .then(() => alert('✅ Link copied to clipboard!'))
-        .catch(() => alert('❌ Failed to copy!'));
-    }
 
     function copySpecificLink(link) {
       navigator.clipboard.writeText(link)
